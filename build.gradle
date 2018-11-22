@@ -2,7 +2,7 @@ plugins {
     id 'me.champeau.gradle.jmh' version '0.4.7' apply false
     id 'com.github.ben-manes.versions' version '0.20.0' apply false
     id 'org.owasp.dependencycheck' version '3.2.1' apply false
-    id 'com.github.spotbugs' version '1.6.2' apply false    
+//    id 'com.github.spotbugs' version '1.6.2' apply false    
     id 'io.morethan.jmhreport' version '0.8.0' apply false
 }
 
@@ -10,7 +10,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'com.github.ben-manes.versions'
     apply plugin: 'org.owasp.dependencycheck'
-    apply plugin: 'com.github.spotbugs'
+//    apply plugin: 'com.github.spotbugs'
     apply plugin: 'maven'
 
     sourceCompatibility = 1.8
@@ -21,12 +21,12 @@ subprojects {
         jcenter()
     }
 
-	tasks.withType(com.github.spotbugs.SpotBugsTask) {
-	  reports {
-	    xml.enabled false
-	    html.enabled true
-	  }
-	}
+//	tasks.withType(com.github.spotbugs.SpotBugsTask) {
+//	  reports {
+//	    xml.enabled false
+//	    html.enabled true
+//	  }
+//	}
 }
 
 configure(project(':jmh-benchmark')) {
