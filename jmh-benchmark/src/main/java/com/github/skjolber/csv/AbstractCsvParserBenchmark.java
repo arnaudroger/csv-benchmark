@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.CompilerControl;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.infra.Blackhole;
 import org.simpleflatmapper.csv.CsvParser;
@@ -53,6 +54,7 @@ public abstract class AbstractCsvParserBenchmark<T> {
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public void sesseltjonnaCsv(Blackhole blackhole, CsvParam csvParam) throws Exception {
     	Reader reader = getReader(csvParam);
     	try {
@@ -76,6 +78,7 @@ public abstract class AbstractCsvParserBenchmark<T> {
     }
 
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public void simpleFlatMapper(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = getReader(csvParam)) {
             mapToDSL.forEach(reader, blackhole::consume);
@@ -107,6 +110,7 @@ public abstract class AbstractCsvParserBenchmark<T> {
     }
     
     @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public void univocity(Blackhole blackhole, CsvParam csvParam) throws IOException {
         CsvParserSettings settings = new CsvParserSettings();
 
